@@ -2,16 +2,20 @@ import { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidData } from "../utils/validate";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setSignInForm] = useState(true);
   const [errorMessage, SetErrorMessage] = useState(null);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const email = useRef(null);
   const password = useRef(null);
-  // const fullname = useRef(null);
+  const fullname = useRef(null);
   const toggleSignInForm = () => {
     setSignInForm(!isSignInForm);
   };
@@ -33,8 +37,22 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: fullname.current.value,
+            photoURL:
+              "https://img.freepik.com/premium-psd/cute-chibi-girl-wearing-deer-hoodie_931199-344.jpg?w=2000",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              SetErrorMessage(error.message);
+            });
           console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -47,8 +65,8 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
+
+          // console.log(user);
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -77,7 +95,7 @@ const Login = () => {
         <h1 className="font-bold text-3xl py-4">{isSignInForm ? "Sign In" : "Sign Up"}</h1>
         {!isSignInForm && (
           <input
-            // ref={fullname}
+            ref={fullname}
             type="text"
             placeholder="Full Name"
             className="p-4 my-4 w-full bg-gray-700"
