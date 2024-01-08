@@ -11,8 +11,8 @@ const MainSection = () => {
   const { original_title, overview, id } = mainMovies;
   return (
     <div>
-      <VideoBackground movieId={id} />
       <VideoTitle title={original_title} overview={overview} />
+      <VideoBackground movieId={id} />
     </div>
   );
 };
