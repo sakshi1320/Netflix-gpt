@@ -5,11 +5,15 @@ import GptSearch from "./GptSearch";
 import Header from "./Header";
 import MainSection from "./MainSection";
 import SecondarySection from "./SecodarySection";
+import useTrendingMovies from "../Hooks/useTrendingMovies";
+import useUpcomingMovies from "../Hooks/useUpcomingMovie";
 
 const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   useNowPlayingMovies();
   usePopularMovies();
+  useTrendingMovies();
+  useUpcomingMovies();
   return (
     <div>
       <Header></Header>
