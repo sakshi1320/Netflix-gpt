@@ -17,7 +17,7 @@
   style="width: 300px">
   </div>
   <div style="flex: 1;">
-  <h3>Searcch Page</h3>
+  <h3>Search Page</h3>
    <img
   src="./public/SearchPage.png"
   alt="Search Page"
@@ -27,7 +27,7 @@
   <div style="flex: 1;">
   <h3>Sign Out Page</h3>
    <img
-  src="./public/signOutPage.png"
+  src="./public/signOut.png"
   alt="Sign Out Page"
   title="Sign Out Page"
   style="width: 300px">
