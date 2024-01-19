@@ -6,7 +6,7 @@
   src="./public/signInPage.png"
   alt="SignIn Page"
   title="SignIn Page"
-  style="width: 300px">
+  style="width: 800px height: 100px">
   </div>
   <div style="flex: 1;">
   <h3>Home Page</h3>
@@ -14,7 +14,7 @@
   src="./public/homePage.png"
   alt="Home Page"
   title="Home Page"
-  style="width: 300px">
+   style="width: 800px height: 100px">
   </div>
   <div style="flex: 1;">
   <h3>Search Page</h3>
@@ -22,7 +22,7 @@
   src="./public/SearchPage.png"
   alt="Search Page"
   title="Search Page"
-  style="width: 300px">
+   style="width: 800px height: 100px">
   </div>
   <div style="flex: 1;">
   <h3>Sign Out Page</h3>
@@ -30,6 +30,6 @@
   src="./public/signOut.png"
   alt="Sign Out Page"
   title="Sign Out Page"
-  style="width: 300px">
+  style="width: 800px height: 100px">
   </div>
 </div>
